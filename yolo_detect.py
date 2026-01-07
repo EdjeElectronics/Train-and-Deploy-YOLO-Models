@@ -30,7 +30,7 @@ args = parser.parse_args()
 # Parse user inputs
 model_path = args.model
 img_source = args.source
-min_thresh = args.thresh
+min_thresh = float(args.thresh)
 user_res = args.resolution
 record = args.record
 
@@ -187,7 +187,7 @@ while True:
         conf = detections[i].conf.item()
 
         # Draw box if confidence threshold is high enough
-        if conf > 0.5:
+        if conf > min_thresh:
 
             color = bbox_colors[classidx % 10]
             cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), color, 2)
