@@ -1,9 +1,17 @@
 #!/bin/bash
 
+# Get sudo permission
+sudo -v
+
 # Confirm user is running Jetpack 6.1 (L4T 36.4)
-L4T_RELEASE=$(head -n 1 /etc/nv_tegra_release | cut -f 2 -d ' ' | cut -d 'R' -f 2)
-L4T_REVISION=$(head -n 1 /etc/nv_tegra_release | cut -f 3 -d ' ' | cut -d ' ' -f 2)
-    
+if [ -f /etc/nv_tegra_release ]; then
+    L4T_RELEASE=$(sed -n 's/.*R\([0-9]*\) (release).*/\1/p' /etc/nv_tegra_release)
+    L4T_REVISION=$(sed -n 's/.*REVISION: \([0-9.]*\).*/\1/p' /etc/nv_tegra_release)
+else
+    echo "nv_tegra_release file not found, so this is not a Jetson system. Exiting script."
+    exit 1
+fi
+
 if [[ "$L4T_RELEASE" == "36" && "$L4T_REVISION" == "4"* ]]; then
     echo "JetPack version is correct (6.1 / L4T $L4T_RELEASE.$L4T_REVISION)"
 else
@@ -19,7 +27,7 @@ fi
 pip install ultralytics
 pip install onnx onnxslim
 pip install numpy==1.26.4
-pip install opencv-python=4.10.0.82
+pip install opencv-python==4.10.0.82
 
 
 # Install special versions of torch and torchvision (compatible with Jetpack 6.1)
@@ -37,3 +45,4 @@ sudo apt-get -y install libcusparselt0 libcusparselt-dev
 # Install onnxruntime-gpu
 pip install https://github.com/ultralytics/assets/releases/download/v0.0.0/onnxruntime_gpu-1.23.0-cp310-cp310-linux_aarch64.whl
 
+echo "Ultralytics YOLO installation successful!"
