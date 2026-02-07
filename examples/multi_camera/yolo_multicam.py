@@ -126,3 +126,7 @@ if __name__ == '__main__':
         process = Process(target=inference_camera, args=(sources[i], models[i], i))
         process.start()
         procs.append(process)
+
+    # Wait for processes to finish (which will not happen until the user presses 'q' on each display window)
+    for p in procs:
+        p.join()
