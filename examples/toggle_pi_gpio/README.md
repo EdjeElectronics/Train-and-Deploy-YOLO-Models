@@ -1,5 +1,5 @@
 # Toggle Raspberry Pi GPIO - Smart Lamp Example
-One cool way to use the Raspberry Pi and YOLO is to control real-world devices when certain events occur. The [toggle_pi_gpio.py](toggle_pi_gpio.py) example shows how to set up a "smart lamp" that turns on when a person is detected within a certain area of the camera's view. This example is a useful starting point to see how to toggle the Raspberry Pi's General-Purpose Input/Output (GPIO) pins using YOLO and Python. You can see the smart lamp in action in my YouTube video for [Running YOLO Models on the Raspberry Pi](google.com).
+One cool way to use the Raspberry Pi and YOLO is to control real-world devices when certain events occur. The [toggle_pi_gpio.py](toggle_pi_gpio.py) example shows how to set up a "smart lamp" that turns on when a person is detected within a certain area of the camera's view. This example is a useful starting point to see how to toggle the Raspberry Pi's General-Purpose Input/Output (GPIO) pins using YOLO and Python. You can see the smart lamp in action in my YouTube video for [Running YOLO Models on the Raspberry Pi](https://www.youtube.com/watch?v=z70ZrSZNi-8).
 
 <p align="center">
   <img src="../../doc/smart-lamp-example.png">
